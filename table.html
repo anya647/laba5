@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Моя третья страничка</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="header">
+            <a href="lab2.html">Основная страница</a>
+            <a href="page2.html">Позиционирование элементов</a>
+            <a href="table.html">Таблица</a>
+        </div>
+        
+    <table>
+        <caption><p>Информация о студентах</caption></p>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ФИО</th>
+                <th>Пол</th>
+                <th>Номер групппы</th>
+                <th>Специальность</th>
+                
+            </tr>
+            <tbody id="directorTable">
+            <tr>
+                <td>1</td>
+                <td>Александр Шалин</td>
+                <td>Мужской</td>
+                <td>6205</td>
+                <td>ИВТ</td>
+               
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Виктория Роголева</td>
+                <td>Женский</td>
+                <td>6202</td>
+                <td>ИВТ</td>
+                
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Данила СССотников</td>
+                <td>Мужской</td>
+                <td>6205</td>
+                <td>ИВТ</td>
+                
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Анастасия Конченко</td>
+                <td>Женский</td>
+                <td>6205</td>
+                <td>ИВТ</td>
+                
+                
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Арслан Махмутов</td>
+                <td>Мужской</td>
+                <td>6205</td>
+                <td>ИВТ</td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <form id="form">
+        <div class="label">
+            <div>
+        <label for="number">#:</label>
+        <input type="number" id="number" name="number" min="6" max="100" required><br><br>
+        
+        <label for="name">ФИО:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="floor">Пол:</label>
+        <select id="floor" name="floor" required>
+            <option value="">Выберите пол</option>
+            <option value="Женский">Женский</option>
+            <option value="Мужской">Мужской</option>
+        </select><br><br>
+        <label for="number1">Номер группы:</label>
+        <input type="text" id="number1" name="number1" required><br><br>
+        
+        <label for="specialty">Специальность:</label>
+        <input type="text" id="specialty" name="specialty" required><br><br>
+        <button type="submit">Добавить</button>
+    </div>
+            
+</div>
+    </form>
+
+    <script>
+        
+        document.getElementById('directorForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const number = document.getElementById('number').value;
+            const name = document.getElementById('name').value;
+            const floor = document.getElementById('floor').value;
+            const number1 = document.getElementById('number1').value;
+            const specialty = document.getElementById('specialty').value;
+            
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${number}</td>
+                <td>${name}</td>
+                <td>${floor.replace(/\n/g, '<br>')}</td>
+                <td>${number1}</td>
+                <td>${specialty}</td>
+                
+            `;
+
+            document.getElementById('directorTable').appendChild(newRow);
+
+            alert('Данные успешно добавлены!');
+
+            document.getElementById('directorForm').reset();
+        });
+    </script>
+    </body>
+</html>
